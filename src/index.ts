@@ -16,6 +16,9 @@ someRouter.get("/", (req, res) => {
 someRouter.get("/hello", (req, res) => {
   res.json({ message: "hello is successful too" });
 });
+someRouter.get("/person", (req, res) => {
+  res.json({ name: "Bill", age: 21 });
+});
 app.use("/", someRouter);
 
 const port = 3000;
