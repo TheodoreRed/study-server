@@ -13,6 +13,9 @@ const someRouter = express.Router();
 someRouter.get("/", (req, res) => {
   res.json({ message: "success" });
 });
+someRouter.get("/hello", (req, res) => {
+  res.json({ message: "hello is successful too" });
+});
 app.use("/", someRouter);
 
 const port = 3000;
