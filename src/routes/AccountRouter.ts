@@ -32,6 +32,9 @@ accountRouter.get("/accounts/:_id", async (req, res) => {
 // Create new Account:
 accountRouter.post("/accounts", async (req, res) => {
   try {
+    if (!req.body.googleId) {
+      res.status(400).json({ message: "Missing the google unique idenitifer" });
+    }
     const account: Account = req.body;
     const client = await getClient();
     await client.db().collection<Account>("accounts").insertOne(account);
