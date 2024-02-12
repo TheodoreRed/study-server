@@ -43,3 +43,5 @@ accountRouter.post("/accounts", async (req, res) => {
     errorResponse(err, res);
   }
 });
+
+export default accountRouter;
