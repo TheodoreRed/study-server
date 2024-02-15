@@ -27,7 +27,7 @@ app.use(
     cookie: {
       secure: false, // Set to true if you are using https
       httpOnly: true, // Helps against XSS attacks
-      sameSite: "lax", // Necessary for cross-origin requests; adjust based on your security requirements
+      sameSite: "none", // Necessary for cross-origin requests; adjust based on your security requirements
     },
   })
 );
