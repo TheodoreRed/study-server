@@ -25,7 +25,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     cookie: {
-      secure: false, // Set to true if you are using https
+      secure: true, // Set to true if you are using https
       httpOnly: true, // Helps against XSS attacks
       sameSite: "none", // Necessary for cross-origin requests; adjust based on your security requirements
     },
