@@ -12,7 +12,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://thestudyapp.surge.sh",
     credentials: true, // Allow sending cookies from the frontend
   })
 );
@@ -29,9 +29,9 @@ app.use(
       mongoUrl: process.env.MONGO_URI,
     }),
     cookie: {
-      secure: true, // Set to true if you are using https
+      secure: false, // 'true' when client and server have https; 'false' in development
       httpOnly: true, // Helps against XSS attacks
-      sameSite: "none", // Necessary for cross-origin requests; adjust based on your security requirements
+      sameSite: false, // Depends in if secure is true or false
     },
   })
 );
