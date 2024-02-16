@@ -3,6 +3,7 @@ import cors from "cors";
 import accountRouter from "./routes/AccountRouter";
 import authRouter from "./routes/AuthRouter";
 import session from "express-session";
+import MongoStore from "connect-mongo";
 import passport from "./config/passportConfig";
 import dotenv from "dotenv";
 dotenv.config();
@@ -24,6 +25,9 @@ app.use(
     secret: process.env.SESSION_SECRET as string,
     resave: false,
     saveUninitialized: true,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGO_URI,
+    }),
     cookie: {
       secure: true, // Set to true if you are using https
       httpOnly: true, // Helps against XSS attacks
