@@ -5,6 +5,7 @@ import authRouter from "./routes/AuthRouter";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 import passport from "./config/passportConfig";
+import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -18,6 +19,9 @@ app.use(
 );
 // allow POST and PUT requests to use JSON bodies
 app.use(express.json());
+
+// Use cookie-parser with a secret
+app.use(cookieParser(process.env.COOKIE_SECRET));
 
 // Session configuration
 app.use(
