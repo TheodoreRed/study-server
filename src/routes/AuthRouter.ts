@@ -6,7 +6,7 @@ dotenv.config();
 const router = express.Router();
 
 const FRONTEND_BASE_URL =
-  process.env.FRONTEND_BASE_URL ?? "error with .env file !!";
+  process.env.FRONTEND_BASE_URL ?? "https://localhost:5173";
 
 router.get(
   "/auth/google",
