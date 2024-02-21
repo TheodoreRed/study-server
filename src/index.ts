@@ -33,9 +33,9 @@ app.use(
       mongoUrl: process.env.MONGO_URI,
     }),
     cookie: {
-      secure: true, // 'true' when client and server have https; 'false' in development
+      secure: true, // 'false' in development
       httpOnly: true, // Helps against XSS attacks
-      sameSite: "none", // Depends in if secure is true or false
+      sameSite: "none",
     },
   })
 );

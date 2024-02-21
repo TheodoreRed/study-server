@@ -20,8 +20,7 @@ router.get(
   }),
   async (req: Request, res: Response) => {
     if (req.user) {
-      console.log(req.user);
-
+      console.log("Authenticated user:", req.user);
       res.redirect(`${FRONTEND_BASE_URL}/dashboard`);
     }
   }

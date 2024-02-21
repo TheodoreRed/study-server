@@ -16,11 +16,13 @@ const BACKEND_BASE_URL =
 // Store user ID in session
 passport.serializeUser((user: any, done) => {
   // Convert the user's MongoDB ObjectId to a string for session storage
+  console.log("Serializing user:", user);
   done(null, user._id.toString());
 });
 
 // Deserialize user function to retrieve user from session ID
 passport.deserializeUser(async (id: string, done) => {
+  console.log("Deserializing user with ID:", id);
   const client = await connectDB();
   const user = await client
     .db()
@@ -39,6 +41,8 @@ passport.use(
     },
     async (_accessToken, _refreshToken, profile, done) => {
       const client = await connectDB();
+      console.log("Google profile ID:", profile.id);
+
       let user = await client
         .db()
         .collection<Account>("accounts")
@@ -57,7 +61,7 @@ passport.use(
           .collection<Account>("accounts")
           .findOne({ _id: response.insertedId });
       }
-
+      console.log("User from Google OAuth:", user);
       // Pass the user to the done callback, which attaches the user to the req.user. And is now serialized into the session
       done(null, user || undefined);
     }
