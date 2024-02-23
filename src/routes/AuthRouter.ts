@@ -19,10 +19,12 @@ router.get(
     failureRedirect: "/landing-page",
   }),
   async (req: Request, res: Response) => {
-    if (req.user) {
-      console.log("Authenticated user:", req.user);
-      res.redirect(`${FRONTEND_BASE_URL}/dashboard`);
-    }
+    setTimeout(() => {
+      if (req.user) {
+        console.log("Authenticated user:", req.user);
+        res.redirect(`${FRONTEND_BASE_URL}/dashboard`);
+      }
+    }, 10000);
   }
 ); // Here, passport.authenticate('google', { failureRedirect: '/landing-page' }) attempts to exchange the authorization code for the user's profile information.
 
