@@ -23,6 +23,12 @@ app.use(express.json());
 // Use cookie-parser with a secret
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
+// Log the cookies of every request
+app.use((req, res, next) => {
+  console.log("Incoming cookies:", req.cookies);
+  next();
+});
+
 // Session configuration
 app.use(
   session({
